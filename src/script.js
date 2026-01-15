@@ -3,6 +3,154 @@ import GUI from 'lil-gui'
 import gsap from "gsap"
 
 
+/**
+ * Mobile media interactions
+ * - Tap video to enter fullscreen (mobile-friendly)
+ * - Tap image to open zoomable preview
+ */
+{
+    const isMobileLike = () => {
+        const coarse = window.matchMedia?.('(pointer: coarse)')?.matches
+        return coarse || window.innerWidth < 768
+    }
+
+    // Video: request fullscreen on mobile tap
+    const videoEl = document.getElementById('agentVideo')
+    if (videoEl instanceof HTMLVideoElement) {
+        const enterFullscreen = async () => {
+            // Enable controls once the user interacts (especially useful on mobile)
+            videoEl.controls = true
+
+            // Try to play (may be blocked if unmuted; currently muted in HTML)
+            videoEl.play?.().catch(() => {})
+
+            // Standard Fullscreen API
+            if (videoEl.requestFullscreen) {
+                try { await videoEl.requestFullscreen() } catch { /* ignore */ }
+                return
+            }
+
+            // iOS Safari video fullscreen
+            // @ts-ignore
+            if (typeof videoEl.webkitEnterFullscreen === 'function') {
+                // @ts-ignore
+                try { videoEl.webkitEnterFullscreen() } catch { /* ignore */ }
+                return
+            }
+
+            // Older webkit API
+            // @ts-ignore
+            if (typeof videoEl.webkitRequestFullscreen === 'function') {
+                // @ts-ignore
+                try { videoEl.webkitRequestFullscreen() } catch { /* ignore */ }
+            }
+        }
+
+        videoEl.addEventListener('click', () => {
+            if (!isMobileLike()) return
+            if (document.fullscreenElement) return
+            void enterFullscreen()
+        })
+    }
+
+    // Image lightbox (zoom controls)
+    const imgEl = document.getElementById('emailPreview')
+    if (imgEl instanceof HTMLImageElement) {
+        const overlay = document.createElement('div')
+        overlay.className = 'fixed inset-0 z-[9999] hidden bg-black/80 p-3 sm:p-4 overflow-hidden'
+        overlay.setAttribute('role', 'dialog')
+        overlay.setAttribute('aria-modal', 'true')
+
+        overlay.innerHTML = `
+            <div class="mx-auto flex h-full w-full max-w-[1100px] flex-col min-w-0">
+                <div class="mb-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2 min-w-0">
+                    <div class="text-[#ffeded] text-sm opacity-90 truncate">Email response preview</div>
+                    <div class="flex flex-wrap items-center justify-start sm:justify-end gap-2">
+                        <button type="button" data-zoom-out class="rounded bg-black/30 px-2.5 py-1.5 text-xs sm:text-sm text-[#ffeded] outline outline-2 outline-[#ffeded]/60 hover:bg-black/40">-</button>
+                        <button type="button" data-zoom-reset class="rounded bg-black/30 px-2.5 py-1.5 text-xs sm:text-sm text-[#ffeded] outline outline-2 outline-[#ffeded]/60 hover:bg-black/40">Reset</button>
+                        <button type="button" data-zoom-in class="rounded bg-black/30 px-2.5 py-1.5 text-xs sm:text-sm text-[#ffeded] outline outline-2 outline-[#ffeded]/60 hover:bg-black/40">+</button>
+                        <button type="button" data-close class="rounded bg-black/30 px-2.5 py-1.5 text-xs sm:text-sm text-[#ffeded] outline outline-2 outline-[#ffeded]/60 hover:bg-black/40">Close</button>
+                    </div>
+                </div>
+                <div class="relative flex-1 overflow-auto rounded-lg bg-black/20 min-w-0">
+                    <img data-preview-img class="block h-auto w-full select-none origin-center" alt="" />
+                </div>
+                <div class="mt-3 text-xs text-[#ffeded] opacity-80">Tip: use + / - to zoom. Tap outside the panel to close.</div>
+            </div>
+        `
+
+        document.body.appendChild(overlay)
+
+        const previewImg = overlay.querySelector('[data-preview-img]')
+        const closeBtn = overlay.querySelector('[data-close]')
+        const zoomInBtn = overlay.querySelector('[data-zoom-in]')
+        const zoomOutBtn = overlay.querySelector('[data-zoom-out]')
+        const zoomResetBtn = overlay.querySelector('[data-zoom-reset]')
+
+        let zoom = 1
+        const clamp = (n, min, max) => Math.min(max, Math.max(min, n))
+
+        const applyZoom = () => {
+            if (!(previewImg instanceof HTMLImageElement)) return
+            previewImg.style.transform = `scale(${zoom})`
+            previewImg.style.transition = 'transform 120ms ease'
+        }
+
+        const open = () => {
+            if (!(previewImg instanceof HTMLImageElement)) return
+            zoom = 1
+            previewImg.src = imgEl.currentSrc || imgEl.src
+            previewImg.alt = imgEl.alt || 'Preview'
+            previewImg.style.transformOrigin = 'center center'
+            applyZoom()
+            overlay.classList.remove('hidden')
+            document.body.style.overflow = 'hidden'
+        }
+
+        const close = () => {
+            overlay.classList.add('hidden')
+            document.body.style.overflow = ''
+        }
+
+        imgEl.addEventListener('click', () => {
+            if (!isMobileLike()) {
+                // Still useful on desktop; keep behavior consistent
+                open()
+                return
+            }
+            open()
+        })
+
+        overlay.addEventListener('click', (e) => {
+            // Click outside the content closes
+            if (e.target === overlay) close()
+        })
+
+        closeBtn?.addEventListener('click', close)
+
+        zoomInBtn?.addEventListener('click', () => {
+            zoom = clamp(zoom + 0.25, 1, 4)
+            applyZoom()
+        })
+
+        zoomOutBtn?.addEventListener('click', () => {
+            zoom = clamp(zoom - 0.25, 1, 4)
+            applyZoom()
+        })
+
+        zoomResetBtn?.addEventListener('click', () => {
+            zoom = 1
+            applyZoom()
+        })
+
+        window.addEventListener('keydown', (e) => {
+            if (overlay.classList.contains('hidden')) return
+            if (e.key === 'Escape') close()
+        })
+    }
+}
+
+
 /* Events */
 const repoBtn = document.getElementById('repo-btn');
 repoBtn.addEventListener('click', () => {
