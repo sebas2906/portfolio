@@ -1,0 +1,109 @@
+
+
+/* html,
+body
+{
+    overflow: hidden;
+} */
+
+html{
+    background-color: #1e1a20;
+}
+
+.webgl
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    outline: none;
+}
+
+
+.section
+{
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+    font-family: 'Cabin', sans-serif;
+    color: #ffeded;
+    font-size: 7vmin;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+/* section:nth-child(odd)
+{
+    justify-content: flex-end;
+} */
+
+/* Typing animation */
+.typing-text {
+    display: inline-block;
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+/* Cursor (works with wrapped text) */
+.typing-text::after {
+    content: '▌';
+    margin-left: 0.15em;
+    animation: blink-caret 0.75s step-end infinite;
+}
+
+@keyframes blink-caret {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+/* 8-bit styling (scoped to the welcome text only) */
+.pixel-8bit {
+    display: inline-block;
+    box-sizing: border-box;
+    max-width: 36ch;
+    width: min(36ch, 100%);
+    font-family: 'Press Start 2P', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    letter-spacing: 0.06em;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.75);
+    padding: 0.35em 0.55em;
+    background: rgba(0, 0, 0, 0.25);
+    outline: 4px solid rgba(255, 237, 237, 0.9);
+    outline-offset: 6px;
+    box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.35);
+}
+
+.shadow{
+     text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.75);
+     box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.35);
+     outline: 4px solid rgba(255, 237, 237, 0.9);
+     background: rgba(0, 0, 0, 0.25);
+}
+
+/* Chat UI (keeps readable sizing inside .section) */
+.chat-ui {
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+.chat-message {
+    max-width: 90%;
+    padding: 10px 12px;
+    border-radius: 10px;
+    margin: 8px 0;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.chat-message.user {
+    margin-left: auto;
+    background: rgba(255, 237, 237, 0.12);
+    outline: 2px solid rgba(255, 237, 237, 0.35);
+}
+
+.chat-message.assistant {
+    margin-right: auto;
+    background: rgba(0, 0, 0, 0.20);
+    outline: 2px solid rgba(255, 237, 237, 0.22);
+}

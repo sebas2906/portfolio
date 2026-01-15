@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sebastián - Full Stack Dev</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LfladQrAAAAAFXXy77glfBU8wChqxagk1ipQGM5"></script>
+</head>
+<body>
+    <canvas class="webgl"></canvas>
+
+    <section class="section justify-between">
+        <h1>Sebastián Alvarez</h1>
+        <div class="text-[20px] typing-text pixel-8bit">
+            Welcome to my porfolio, Let's create great things together
+        </div>
+    </section>
+    <section class="section justify-between">
+        <div class="shadow text-[40px]">Technologies and Frameworks</div>
+        <div class="grid grid-cols-3 w-[50%]">
+            <button type="button" class="relative group w-fit h-fit cursor-pointer p-2" aria-label="JavaScript">
+                <img src="./js.png" alt="JavaScript" class="w-[70px] transition-transform group-hover:scale-[1.03] group-focus-visible:scale-[1.03]">
+                <span role="tooltip" class="pointer-events-none absolute left-1/2 top-full z-10 mt-2 w-[min(18rem,90vw)] -translate-x-1/2 rounded-md bg-black/80 px-3 py-2 text-[12px] leading-snug text-[#ffeded] opacity-0 translate-y-1 transition-all duration-150 group-hover:opacity-100 group-hover:translate-y-0 group-focus-visible:opacity-100 group-focus-visible:translate-y-0">
+                    <span class="block font-semibold">JavaScript</span>
+                    <span class="block opacity-90">Interactive web experiences and tooling.</span>
+                </span>
+            </button>
+
+            <button type="button" class="relative group w-fit h-fit cursor-pointer p-2" aria-label="Python">
+                <img src="./py.png" alt="Python" class="w-[70px] transition-transform group-hover:scale-[1.03] group-focus-visible:scale-[1.03]">
+                <span role="tooltip" class="pointer-events-none absolute left-1/2 top-full z-10 mt-2 w-[min(18rem,90vw)] -translate-x-1/2 rounded-md bg-black/80 px-3 py-2 text-[12px] leading-snug text-[#ffeded] opacity-0 translate-y-1 transition-all duration-150 group-hover:opacity-100 group-hover:translate-y-0 group-focus-visible:opacity-100 group-focus-visible:translate-y-0">
+                    <span class="block font-semibold">Python</span>
+                    <span class="block opacity-90">Automation, backend APIs, AI, Data structures.</span>
+                </span>
+            </button>
+
+            <button type="button" class="relative group w-fit h-fit cursor-pointer p-2" aria-label="C#">
+                <img src="./cs.png" alt="C#" class="w-[70px] transition-transform group-hover:scale-[1.03] group-focus-visible:scale-[1.03]">
+                <span role="tooltip" class="pointer-events-none absolute left-1/2 top-full z-10 mt-2 w-[min(18rem,90vw)] -translate-x-1/2 rounded-md bg-black/80 px-3 py-2 text-[12px] leading-snug text-[#ffeded] opacity-0 translate-y-1 transition-all duration-150 group-hover:opacity-100 group-hover:translate-y-0 group-focus-visible:opacity-100 group-focus-visible:translate-y-0">
+                    <span class="block font-semibold">C#</span>
+                    <span class="block opacity-90">.NET apps, services, and APIs.</span>
+                </span>
+            </button>
+
+            <button type="button" class="relative group w-fit h-fit cursor-pointer p-2" aria-label="Linux">
+                <img src="./ln.png" alt="Linux" class="w-[70px] transition-transform group-hover:scale-[1.03] group-focus-visible:scale-[1.03]">
+                <span role="tooltip" class="pointer-events-none absolute left-1/2 top-full z-10 mt-2 w-[min(18rem,90vw)] -translate-x-1/2 rounded-md bg-black/80 px-3 py-2 text-[12px] leading-snug text-[#ffeded] opacity-0 translate-y-1 transition-all duration-150 group-hover:opacity-100 group-hover:translate-y-0 group-focus-visible:opacity-100 group-focus-visible:translate-y-0">
+                    <span class="block font-semibold">Linux</span>
+                    <span class="block opacity-90">CLI, servers, and deployment workflows.</span>
+                </span>
+            </button>
+
+            <button type="button" class="relative group w-fit h-fit cursor-pointer p-2" aria-label="Docker">
+                <img src="./dk.png" alt="Docker" class="w-[70px] transition-transform group-hover:scale-[1.03] group-focus-visible:scale-[1.03]">
+                <span role="tooltip" class="pointer-events-none absolute left-1/2 top-full z-10 mt-2 w-[min(18rem,90vw)] -translate-x-1/2 rounded-md bg-black/80 px-3 py-2 text-[12px] leading-snug text-[#ffeded] opacity-0 translate-y-1 transition-all duration-150 group-hover:opacity-100 group-hover:translate-y-0 group-focus-visible:opacity-100 group-focus-visible:translate-y-0">
+                    <span class="block font-semibold">Docker</span>
+                    <span class="block opacity-90">Apps in containers for consistent dev and deploy.</span>
+                </span>
+            </button>
+
+            <button type="button" class="relative group w-fit h-fit cursor-pointer p-2" aria-label="LangChain">
+                <img src="./lc.png" alt="LangChain" class="w-[70px] transition-transform group-hover:scale-[1.03] group-focus-visible:scale-[1.03]">
+                <span role="tooltip" class="pointer-events-none absolute left-1/2 top-full z-10 mt-2 w-[min(18rem,90vw)] -translate-x-1/2 rounded-md bg-black/80 px-3 py-2 text-[12px] leading-snug text-[#ffeded] opacity-0 translate-y-1 transition-all duration-150 group-hover:opacity-100 group-hover:translate-y-0 group-focus-visible:opacity-100 group-focus-visible:translate-y-0">
+                    <span class="block font-semibold">LangChain</span>
+                    <span class="block opacity-90">LLM apps with tools, retrieval, and workflows.</span>
+                </span>
+            </button>
+
+            <button type="button" class="relative group w-fit h-fit cursor-pointer p-2" aria-label="Tailwind CSS">
+                <img src="./tw.webp" alt="Tailwind CSS" class="w-[70px] transition-transform group-hover:scale-[1.03] group-focus-visible:scale-[1.03]">
+                <span role="tooltip" class="pointer-events-none absolute left-1/2 top-full z-10 mt-2 w-[min(18rem,90vw)] -translate-x-1/2 rounded-md bg-black/80 px-3 py-2 text-[12px] leading-snug text-[#ffeded] opacity-0 translate-y-1 transition-all duration-150 group-hover:opacity-100 group-hover:translate-y-0 group-focus-visible:opacity-100 group-focus-visible:translate-y-0">
+                    <span class="block font-semibold">Tailwind CSS</span>
+                    <span class="block opacity-90">Atyling for fast, consistent UI.</span>
+                </span>
+            </button>
+
+            <button type="button" class="relative group w-fit h-fit cursor-pointer p-2" aria-label="Node.js">
+                <img src="./nd.webp" alt="Node.js" class="w-[70px] transition-transform group-hover:scale-[1.03] group-focus-visible:scale-[1.03]">
+                <span role="tooltip" class="pointer-events-none absolute left-1/2 top-full z-10 mt-2 w-[min(18rem,90vw)] -translate-x-1/2 rounded-md bg-black/80 px-3 py-2 text-[12px] leading-snug text-[#ffeded] opacity-0 translate-y-1 transition-all duration-150 group-hover:opacity-100 group-hover:translate-y-0 group-focus-visible:opacity-100 group-focus-visible:translate-y-0">
+                    <span class="block font-semibold">Node.js</span>
+                    <span class="block opacity-90">APIs and tooling.</span>
+                </span>
+            </button>
+
+            <button type="button" class="relative group w-fit h-fit cursor-pointer p-2" aria-label="TypeScript">
+                <img src="./ts.png" alt="TypeScript" class="w-[70px] transition-transform group-hover:scale-[1.03] group-focus-visible:scale-[1.03]">
+                <span role="tooltip" class="pointer-events-none absolute left-1/2 top-full z-10 mt-2 w-[min(18rem,90vw)] -translate-x-1/2 rounded-md bg-black/80 px-3 py-2 text-[12px] leading-snug text-[#ffeded] opacity-0 translate-y-1 transition-all duration-150 group-hover:opacity-100 group-hover:translate-y-0 group-focus-visible:opacity-100 group-focus-visible:translate-y-0">
+                    <span class="block font-semibold">TypeScript</span>
+                    <span class="block opacity-90">Types to JavaScript for safer, scalable apps.</span>
+                </span>
+            </button>
+
+            <button type="button" class="relative group w-fit h-fit cursor-pointer p-2" aria-label="MongoDB">
+                <img src="./md.png" alt="MongoDB" class="w-[70px] transition-transform group-hover:scale-[1.03] group-focus-visible:scale-[1.03]">
+                <span role="tooltip" class="pointer-events-none absolute left-1/2 top-full z-10 mt-2 w-[min(18rem,90vw)] -translate-x-1/2 rounded-md bg-black/80 px-3 py-2 text-[12px] leading-snug text-[#ffeded] opacity-0 translate-y-1 transition-all duration-150 group-hover:opacity-100 group-hover:translate-y-0 group-focus-visible:opacity-100 group-focus-visible:translate-y-0">
+                    <span class="block font-semibold">MongoDB</span>
+                    <span class="block opacity-90">Flexible schemas and fast iteration.</span>
+                </span>
+            </button>
+
+            <button type="button" class="relative group w-fit h-fit cursor-pointer p-2" aria-label="Angular">
+                <img src="./ag.png" alt="Angular" class="w-[70px] transition-transform group-hover:scale-[1.03] group-focus-visible:scale-[1.03]">
+                <span role="tooltip" class="pointer-events-none absolute left-1/2 top-full z-10 mt-2 w-[min(18rem,90vw)] -translate-x-1/2 rounded-md bg-black/80 px-3 py-2 text-[12px] leading-snug text-[#ffeded] opacity-0 translate-y-1 transition-all duration-150 group-hover:opacity-100 group-hover:translate-y-0 group-focus-visible:opacity-100 group-focus-visible:translate-y-0">
+                    <span class="block font-semibold">Angular</span>
+                    <span class="block opacity-90">Structured framework for large, component-driven apps.</span>
+                </span>
+            </button>
+
+            <button type="button" class="relative group w-fit h-fit cursor-pointer p-2" aria-label="React">
+                <img src="./ra.png" alt="React" class="w-[70px] transition-transform group-hover:scale-[1.03] group-focus-visible:scale-[1.03]">
+                <span role="tooltip" class="pointer-events-none absolute left-1/2 top-full z-10 mt-2 w-[min(18rem,90vw)] -translate-x-1/2 rounded-md bg-black/80 px-3 py-2 text-[12px] leading-snug text-[#ffeded] opacity-0 translate-y-1 transition-all duration-150 group-hover:opacity-100 group-hover:translate-y-0 group-focus-visible:opacity-100 group-focus-visible:translate-y-0">
+                    <span class="block font-semibold">React</span>
+                    <span class="block opacity-90">Component-based UI library for fast, interactive interfaces.</span>
+                </span>
+            </button>
+        </div>
+    </section>
+    <section class="section flex-none" style="display: block !important;">
+        <div class="flex justify-between">
+            <h2>Agent Core</h2>
+            <div class="w-[50%] text-[20px] shadow p-4">
+                <div>
+                    Agent Core is a project based con Nest, Typescript, MongoDB, LangChain and Cloud services served with docker containers. The purpose of this project is to provide a simple server that can be customized with multiple tools to provide any functionality. Agent Core iniciatilices a new AI Agent based on current configurations in MongoDB. This allows to create different agents for multiple purposes (e.g. Scheduling calendars, Analizing databases, create orders, etc...) for different types of business.
+                </div>
+                <div class="mt-4">
+                    <button id="repo-btn" class="shadow p-2 cursor-pointer m-auto block">Github Repo</button>
+                </div>
+            </div>
+        </div>
+        <div class="w-full mt-10">
+            <video src="./video.mp4" autoplay muted loop playsinline></video>
+            <div class="my-4 text-sm">Email response from Agent Core</div>
+            <img src="./email.png" alt="email response">
+        </div>
+    </section>
+    <section class="section flex flex-col items-start justify-center gap-6 mt-6">
+        <h2>Contact me</h2>
+        <div class="flex justify-between w-full">
+            <div class="text-[15px] shadow h-fit p-4 w-[50%]">
+                <div>
+                    Ask my agent anything about my profile, also you can ask him to send me an email for you. But if you deside to write me directly here is my email: s.sebas33@outlook.es
+                </div>
+                <div class="mt-2">
+                    Agent Core is capable of scheduling tasks on Google calendar and much more too, but now just the email contact tool is available in this chat.
+                </div>
+            </div>
+            <div class="chat-ui shadow p-4 w-full max-w-[640px]">
+                <div class="text-[16px] mb-3 opacity-90">Ask me anything:</div>
+    
+                <div id="chatMessages" class="chat-messages w-full h-[260px] overflow-y-auto p-3 rounded bg-black/20"></div>
+    
+                <form id="chatForm" class="mt-3 flex gap-2">
+                    <input
+                        id="chatInput"
+                        type="text"
+                        class="w-full rounded bg-black/20 px-3 py-2 text-[14px] outline-none"
+                        placeholder="Type your message..."
+                        autocomplete="off"
+                    />
+                    <button
+                        id="chatSend"
+                        type="submit"
+                        class="rounded px-4 py-2 text-[14px] bg-black/30 hover:bg-black/40 outline outline-2 outline-[#ffeded]/80"
+                    >
+                        Send
+                    </button>
+                </form>
+    
+                <div id="chatStatus" class="mt-2 text-[12px] opacity-70"></div>
+            </div>
+        </div>
+    </section>
+
+    <script type="module" src="./script.js"></script>
+</body>
+</html>
