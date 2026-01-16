@@ -31,7 +31,7 @@ html{
 {
     display: flex;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     position: relative;
     font-family: 'Cabin', sans-serif;
     color: #ffeded;
